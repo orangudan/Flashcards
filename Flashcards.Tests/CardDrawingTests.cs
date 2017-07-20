@@ -21,14 +21,6 @@ namespace Flashcards.Tests
         }
 
         [Test]
-        public void Card_can_be_drawn_from_deck()
-        {
-            var deck = new Deck(new Card());
-            var drawnCard = deck.DrawCard();
-            Assert.IsNotNull(drawnCard);
-        }
-
-        [Test]
         public void Oldest_card_is_drawn_first()
         {            
             var drawnCard = _deck.DrawCard();
