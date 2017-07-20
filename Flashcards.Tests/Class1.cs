@@ -25,6 +25,18 @@ namespace Flashcards.Tests
             var drawnCard = deck.DrawCard();
             Assert.AreEqual(oldestCard, drawnCard);
         }
+
+        [Test]
+        public void Same_card_is_not_drawn_twice_in_a_row()
+        {
+            var deck = new Deck(
+                new Card(DateTime.Now.AddDays(-7)),
+                new Card(DateTime.Now.AddDays(-3))
+            );
+            var firstCard = deck.DrawCard();
+            var secondCard = deck.DrawCard();
+            Assert.AreNotEqual(firstCard, secondCard);
+        }
     }
 
     class Deck
