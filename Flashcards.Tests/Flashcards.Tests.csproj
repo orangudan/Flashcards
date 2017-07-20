@@ -53,6 +53,12 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Flashcards.ConsoleApp\Flashcards.ConsoleApp.csproj">
+      <Project>{6403ac83-a0a0-49b8-8b8d-59432882208c}</Project>
+      <Name>Flashcards.ConsoleApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
