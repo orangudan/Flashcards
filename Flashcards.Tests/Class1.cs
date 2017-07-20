@@ -50,7 +50,9 @@ namespace Flashcards.Tests
 
         public Card DrawCard()
         {
-            return _cards.OrderBy(card => card.LastDrawn).First();
+            var drawnCard = _cards.OrderBy(card => card.LastDrawn).First();
+            drawnCard.LastDrawn = DateTime.Now;
+            return drawnCard;
         }
     }
 
