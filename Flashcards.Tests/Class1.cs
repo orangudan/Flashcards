@@ -19,7 +19,7 @@ namespace Flashcards.Tests
     {
         public Card DrawCard()
         {
-            return null;
+            return new Card();
         }
     }
 
