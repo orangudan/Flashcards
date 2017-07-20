@@ -6,8 +6,20 @@ using System.Linq;
 namespace Flashcards.Tests
 {
     [TestFixture]
-    public class Class1
+    public class CardDrawingTests
     {
+        private Card _initiallyOldestCard;
+        private Card _otherCard;
+        private Deck _deck;
+
+        [SetUp]
+        public void Set_up_deck()
+        {
+            _initiallyOldestCard = new Card(DateTime.Now.AddDays(-7));
+            _otherCard = new Card(DateTime.Now.AddDays(-3));
+            _deck = new Deck(_initiallyOldestCard, _otherCard);;
+        }
+
         [Test]
         public void Card_can_be_drawn_from_deck()
         {
@@ -18,23 +30,16 @@ namespace Flashcards.Tests
 
         [Test]
         public void Oldest_card_is_drawn_first()
-        {
-            var oldestCard = new Card(DateTime.Now.AddDays(-7));
-            var otherCard = new Card(DateTime.Now);
-            var deck = new Deck(oldestCard, otherCard);
-            var drawnCard = deck.DrawCard();
-            Assert.AreEqual(oldestCard, drawnCard);
+        {            
+            var drawnCard = _deck.DrawCard();
+            Assert.AreEqual(_initiallyOldestCard, drawnCard);
         }
 
         [Test]
         public void Same_card_is_not_drawn_twice_in_a_row()
         {
-            var deck = new Deck(
-                new Card(DateTime.Now.AddDays(-7)),
-                new Card(DateTime.Now.AddDays(-3))
-            );
-            var firstCard = deck.DrawCard();
-            var secondCard = deck.DrawCard();
+            var firstCard = _deck.DrawCard();
+            var secondCard = _deck.DrawCard();
             Assert.AreNotEqual(firstCard, secondCard);
         }
     }
