@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Flashcards.Tests
 {
@@ -10,7 +11,7 @@ namespace Flashcards.Tests
         [Test]
         public void Card_can_be_drawn_from_deck()
         {
-            var deck = new Deck();
+            var deck = new Deck(new Card());
             var drawnCard = deck.DrawCard();
             Assert.IsNotNull(drawnCard);
         }
@@ -37,7 +38,7 @@ namespace Flashcards.Tests
 
         public Card DrawCard()
         {
-            return new Card();
+            return _cards.OrderBy(card => card.LastDrawn).First();
         }
     }
 
