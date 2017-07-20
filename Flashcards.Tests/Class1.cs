@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Flashcards.Tests
 {
@@ -6,9 +7,23 @@ namespace Flashcards.Tests
     public class Class1
     {
         [Test]
-        public void Test()
+        public void Card_can_be_drawn_from_deck()
         {
-            Assert.Fail("Testing the testing framework!");
+            var deck = new Deck();
+            var drawnCard = deck.DrawCard();
+            Assert.IsNotNull(drawnCard);
         }
+    }
+
+    class Deck
+    {
+        public Card DrawCard()
+        {
+            return null;
+        }
+    }
+
+    class Card
+    {
     }
 }
